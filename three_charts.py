@@ -4,6 +4,8 @@
 # CHART 1 (PIE)
 #
 
+import matplotlib.pyplot as plt
+
 pie_data = [
     {"company": "Company X", "market_share": 0.55},
     {"company": "Company Y", "market_share": 0.30},
@@ -13,6 +15,23 @@ pie_data = [
 print("----------------")
 print("GENERATING PIE CHART...")
 print(pie_data) # TODO: create a pie chart based on the pie_data
+
+# list comprehension
+labels = [d["company"] for d in pie_data]
+sizes = [d["market_share"] for d in pie_data]
+
+#for x in pie_data:
+#    labels.append(x["company"])
+#    sizes.append(x["market_share"])
+
+colors = ['gold', 'lightcoral', 'lightskyblue']
+explode = (0.1, 0, 0)
+
+fig1, ax1 = plt.subplots()
+ax1.pie(sizes, labels=labels, colors=colors, explode=explode, autopct='%1.1f%%', shadow=True, startangle=90)
+ax1.axis("equal")
+
+plt.show()
 
 #
 # CHART 2 (LINE)
@@ -33,6 +52,20 @@ print("----------------")
 print("GENERATING LINE GRAPH...")
 print(line_data) # TODO: create a line graph based on the line_data
 
+dates = [d["date"] for d in line_data]
+stock_price = [d["stock_price_usd"] for d in line_data]
+
+#for x in line_data:
+#    dates.append(x["date"])
+#    stock_price.append(x["stock_price_usd"])
+
+plt.plot(dates, stock_price)
+
+plt.xlabel("Date")
+plt.ylabel("Stock Price USD")
+plt.title("Line Chart")
+plt.show()
+
 #
 # CHART 3 (HORIZONTAL BAR)
 #
@@ -50,3 +83,4 @@ bar_data = [
 print("----------------")
 print("GENERATING BAR CHART...")
 print(bar_data) # TODO: create a horizontal bar chart based on the bar_data
+
